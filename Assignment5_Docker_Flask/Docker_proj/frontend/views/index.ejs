@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Enrollment Form</title>
+</head>
+<body>
+
+  <h2>Student Enrollment Form</h2>
+
+  <% if (error) { %>
+    <p style="color:red;">⚠ <%= error %></p>
+  <% } %>
+
+  <% if (success) { %>
+    <p style="color:green;">✓ <%= success %></p>
+  <% } %>
+
+  <form action="/submit" method="POST">
+
+    <label>Name:</label><br/>
+    <input type="text" name="name" /><br/><br/>
+
+    <label>Email:</label><br/>
+    <input type="email" name="email" /><br/><br/>
+
+    <label>Course:</label><br/>
+    <select name="course">
+      <option value="">-- Select --</option>
+      <option value="DevOps">DevOps</option>
+      <option value="Python">Python</option>
+      <option value="Cloud">Cloud Computing</option>
+    </select><br/><br/>
+
+    <button type="submit">Submit</button>
+
+  </form>
+
+</body>
+</html>
