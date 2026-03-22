@@ -1,0 +1,35 @@
+version: '1.0'
+
+services:
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile-backend
+    hostname: backend-host
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./backend/.env
+    networks:
+      - dockerProj-network
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile-frontend
+    hostname: frontend-host
+    ports:
+      - "3000:3000"
+    environment:
+      - BACKEND_URL=http://backend-host:5000
+    depends_on:
+      - backend
+    links:
+      - backend
+    networks:
+      - dockerProj-network
+
+networks:
+  dockerProj-network:
+    driver: bridge

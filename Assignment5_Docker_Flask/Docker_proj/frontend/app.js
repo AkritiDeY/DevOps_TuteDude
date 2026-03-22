@@ -32,7 +32,7 @@ app.post('/submit', async (req, res) => {
         const result = await response.json();
 
         if (result.success) {
-            res.render('index', { error: null, success: 'Data submitted successfully!' });
+            res.render('index', { error: null, success: 'Data submitted successfully!!' });
         } else {
             res.render('index', { error: result.error, success: null });
         }
